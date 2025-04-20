@@ -43,6 +43,7 @@ const Gallery = ({ tours, setTours, onRemoveTour }) => {
         );
     } // Displays a message if no tours are available
 
+// Task 3: Render Tour Cards
     return (
         <section className="gallery">
         {tours.map((tour) => (
