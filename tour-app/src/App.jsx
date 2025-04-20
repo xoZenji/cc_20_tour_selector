@@ -1,35 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Task 2: Created Dropdown Filter
+import React, { useState } from "react";
+ import Gallery from "./components/Gallery"; 
+ import DestinationSelector from "./components/DestinationSelector"; 
+ import './styles/styles.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tours, setTours] = useState([]);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+   const [selectedTour, setSelectedTour] = useState("all"); 
+   const filteredTours = selectedTour === "all" ? tours : tours.filter((tour) => tour.name === selectedTour);
+  
+   return(
+     <main>
+       <h1>Our Tours</h1>
+ 
+       <DestinationSelector tours={tours} selectedTour={selectedTour} setSelectedTour={setSelectedTour} />
+       </main>
+   ); // This component renders the main application. It uses the Gallery and DestinationSelector components to display the tours and allow users to select a destination.
 }
 
 export default App
