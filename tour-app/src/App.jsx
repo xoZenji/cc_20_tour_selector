@@ -10,12 +10,21 @@ function App() {
    const [selectedTour, setSelectedTour] = useState("all"); 
    const filteredTours = selectedTour === "all" ? tours : tours.filter((tour) => tour.name === selectedTour);
   
-   const removeTour = (id) => { 
- 
-    setTours((prevTours) => prevTours.filter((tour) => tour.id !== id)); // Filter out tour by id
+ const removeTour = (id) => { 
+  setTours((prevTours) => {
+    const updatedTours = prevTours.filter((tour) => tour.id !== id); // Filter out tour by id
 
-    const updatedTours = tours.filter((tour) => tour.id !== id); // Update the tours state with the filtered tours
-  };
+// Task 4: Reset View
+    if (
+      selectedTour !== "all" &&
+      updatedTours.filter((tour) => tour.name === selectedTour).length === 0  
+    ) {
+      setSelectedTour("all");
+    } // Reset selectedTour if no tours match the selected destination
+
+    return updatedTours;
+  }); // This function updates the tours state by filtering out the tour with the given id.
+};
 
    return(
      <main>

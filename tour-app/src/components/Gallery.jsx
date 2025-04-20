@@ -35,6 +35,7 @@ const Gallery = ({ tours, setTours, onRemoveTour }) => {
         return <h2>Error: could not fetch any tours.</h2>
     } // Displays an error message if the fetch fails.
 
+// Task 4: Reset View
     if (tours.length === 0) { 
         return (
             <div className="gallery">
